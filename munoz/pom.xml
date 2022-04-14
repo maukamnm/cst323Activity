@@ -12,6 +12,7 @@
     <artifactId>munoz</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>munoz</name>
+    <packaging>war</packaging>
     <description>cst-323 project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -68,6 +69,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+<!--            For deploying sans war-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -91,7 +93,33 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+<!--                for building war-->
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.3</version>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.3</version>
+                <configuration>
+                    <appName>Your-app-name</appName>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                <artifactId>maven-war-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <attachClasses>true</attachClasses>-->
+<!--                    <webXml>target/web.xml</webXml>-->
+<!--                    <webResources>-->
+<!--                        <resource>-->
+<!--                            <directory>target/dependencies/</directory>-->
+<!--                            <filtering>true</filtering>-->
+<!--                        </resource>-->
+<!--                    </webResources>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
         </plugins>
     </build>
-
 </project>
